@@ -120,7 +120,7 @@ export default function Contact() {
     {
       icon: Phone,
       title: "Phone",
-      content: "882-452-5849",
+      content: "(+91)882-452-5849",
       description: "Mon-Fri from 8am to 6pm",
     },
     {
