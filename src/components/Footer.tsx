@@ -58,7 +58,7 @@ export default function Footer() {
               <div className="space-y-3">
                 <div className="flex items-center space-x-3 text-sm text-muted-foreground">
                   <Mail className="h-4 w-4" />
-                  <span>hello@bitnex.com</span>
+                  <span>hr@bitnexinfotech.com</span>
                 </div>
                 <div className="flex items-center space-x-3 text-sm text-muted-foreground">
                   <Phone className="h-4 w-4" />
