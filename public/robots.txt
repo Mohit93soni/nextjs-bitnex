@@ -1,0 +1,5 @@
+﻿User-agent: *
+Disallow:
+
+
+Sitemap: https://www.bitnexinfotech.com/sitemap.xml
