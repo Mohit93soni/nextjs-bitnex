@@ -104,7 +104,7 @@ const services = [
   // },
   {
     icon: <Users className="h-12 w-12 text-primary" />,
-    title: "Staffing Solutionss",
+    title: "Staffing Solutions",
     description:
       "Outsource skilled developers and IT professionals to augment your team and accelerate project delivery.",
     features: [
