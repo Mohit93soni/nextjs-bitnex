@@ -125,13 +125,13 @@ export default function HomePage() {
         "Native and cross-platform mobile apps using React Native and Flutter.",
       features: ["React Native", "Flutter", "iOS & Android", "Cross-platform"],
     },
-    {
-      icon: Cloud,
-      title: "DevOps & Cloud",
-      description:
-        "Scalable cloud infrastructure and CI/CD pipelines on AWS and other platforms.",
-      features: ["AWS Services", "CI/CD Pipelines", "Docker", "Kubernetes"],
-    },
+    // {
+    //   icon: Cloud,
+    //   title: "DevOps & Cloud",
+    //   description:
+    //     "Scalable cloud infrastructure and CI/CD pipelines on AWS and other platforms.",
+    //   features: ["AWS Services", "CI/CD Pipelines", "Docker", "Kubernetes"],
+    // },
     {
       icon: Users,
       title: "Staffing Solutions",
