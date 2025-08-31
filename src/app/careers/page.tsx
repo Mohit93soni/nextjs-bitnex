@@ -236,6 +236,10 @@ export default function CareersPage() {
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
               Explore exciting opportunities to join our growing team and make an impact.
             </p>
+            <p className="text-sm text-muted-foreground max-w-2xl mx-auto mt-2">
+              To apply, send your details and CV to
+              <a href="mailto:hr@bitnexinfotech.com" className="text-primary hover:underline ml-1">hr@bitnexinfotech.com</a>.
+            </p>
           </div>
           
           <div className="space-y-8">
@@ -263,8 +267,8 @@ export default function CareersPage() {
                       </div>
                     </div>
                   </div>
-                  <a 
-                    href={`/contact?position=${encodeURIComponent(job.title)}`}
+                  <a
+                    href={`mailto:hr@bitnexinfotech.com?subject=${encodeURIComponent('Application for ' + job.title)}&body=${encodeURIComponent('Hello HR Team,\n\nI would like to apply for the ' + job.title + ' position.\n\nName:\nEmail:\nPhone:\nLinkedIn/GitHub:\nPortfolio:\n\nPlease find my CV attached.\n\nThanks,\n')}`}
                     className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-6 mt-4 lg:mt-0"
                   >
                     Apply Now
@@ -340,8 +344,8 @@ export default function CareersPage() {
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto mb-8">
               We're always interested in meeting talented individuals. Send us your resume and let's talk about future opportunities.
             </p>
-            <a 
-              href="/contact?subject=General Application"
+            <a
+              href={`mailto:hr@bitnexinfotech.com?subject=${encodeURIComponent('General Application')}&body=${encodeURIComponent('Hello HR Team,\n\nI would like to be considered for future opportunities.\n\nName:\nEmail:\nPhone:\nLinkedIn/GitHub:\nPortfolio:\n\nPlease find my CV attached.\n\nThanks,\n')}`}
               className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-11 px-8"
             >
               Get in Touch
