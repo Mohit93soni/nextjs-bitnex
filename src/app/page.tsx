@@ -218,9 +218,9 @@ export default function HomePage() {
   ];
 
   const stats = [
-    { label: "Projects Delivered", value: "100+" },
-    { label: "Happy Clients", value: "50+" },
-    { label: "Years Experience", value: "8+" },
+    { label: "Projects Delivered", value: "20+" },
+    { label: "Happy Clients", value: "10+" },
+    { label: "Founded", value: "2024" },
     { label: "Team Members", value: "25+" },
   ];
 
