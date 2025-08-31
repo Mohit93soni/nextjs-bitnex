@@ -40,27 +40,27 @@ const values = [
 
 const team = [
   {
-    name: "Mohit Soni",
-    role: "CEO & Founder",
-    description: "Visionary leader with 8+ years of experience in software development and business strategy.",
+    name: "Sunita",
+    role: "Founder",
+    description: "Founder overseeing vision, product strategy, and company culture.",
     image: "/placeholder.svg"
   },
   {
-    name: "Priya Sharma",
-    role: "CTO",
-    description: "Technical expert specializing in cloud architecture and full-stack development.",
+    name: "Mohit Soni",
+    role: "CEO",
+    description: "Leads operations, client relationships, and business growth across Bitnex Infotech.",
     image: "/placeholder.svg"
   },
   {
     name: "Rahul Kumar",
-    role: "Lead Developer",
-    description: "Frontend specialist with expertise in React, Next.js, and modern JavaScript frameworks.",
+    role: "CTO",
+    description: "Heads engineering, technical strategy, and architecture across web and mobile platforms.",
     image: "/placeholder.svg"
   },
   {
-    name: "Sneha Patel",
-    role: "UI/UX Designer",
-    description: "Creative designer focused on user-centered design and exceptional user experiences.",
+    name: "Dinesh Kumar",
+    role: "Head HR",
+    description: "Leads talent acquisition, people operations, and a high-performance culture.",
     image: "/placeholder.svg"
   }
 ];
