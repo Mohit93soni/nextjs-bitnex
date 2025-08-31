@@ -229,7 +229,7 @@ export default function HomePage() {
       name: "DesignRush",
       href: "https://www.designrush.com/agency/profile/bitnex-infotech",
       imageSrc:
-        "https://cdn.builder.io/api/v1/image/assets%2F00bbbe83bd864c758548dbeefa6488bb%2Fe203e96c14c345d4bed74c1416ecb7da?format=webp&width=800",
+        "/images/designrush-badge.png",
       alt: "View our DesignRush profile",
     },
   ];
@@ -492,13 +492,13 @@ export default function HomePage() {
               Partnerships
             </Badge>
             <h2 className="text-3xl md:text-4xl font-bold mb-6">
-              Title <span className="gradient-text">Partnership</span>
+              Partnership <span className="gradient-text">With</span>
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
               We’re proud to partner with industry leaders.
             </p>
           </div>
-          <div className="grid place-items-center gap-8 md:grid-cols-2 lg:grid-cols-3">
+          <div className="flex flex-wrap justify-center items-center gap-8">
             {partnerships.map((p) => (
               <a
                 key={p.name}
