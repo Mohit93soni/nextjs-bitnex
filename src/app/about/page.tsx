@@ -9,10 +9,10 @@ export const metadata: Metadata = {
 };
 
 const stats = [
-  { label: "Projects Completed", value: "50+" },
-  { label: "Happy Clients", value: "30+" },
-  { label: "Years Experience", value: "5+" },
-  { label: "Team Members", value: "10+" }
+  { label: "Projects Completed", value: "20+" },
+  { label: "Happy Clients", value: "10+" },
+  { label: "Founded", value: "2024" },
+  { label: "Team Members", value: "25+" }
 ];
 
 const values = [
@@ -40,38 +40,38 @@ const values = [
 
 const team = [
   {
-    name: "Mohit Soni",
-    role: "CEO & Founder",
-    description: "Visionary leader with 8+ years of experience in software development and business strategy.",
+    name: "Sunita",
+    role: "Founder",
+    description: "Founder overseeing vision, product strategy, and company culture.",
     image: "/placeholder.svg"
   },
   {
-    name: "Priya Sharma",
-    role: "CTO",
-    description: "Technical expert specializing in cloud architecture and full-stack development.",
+    name: "Mohit Soni",
+    role: "CEO",
+    description: "Leads operations, client relationships, and business growth across Bitnex Infotech.",
     image: "/placeholder.svg"
   },
   {
     name: "Rahul Kumar",
-    role: "Lead Developer",
-    description: "Frontend specialist with expertise in React, Next.js, and modern JavaScript frameworks.",
+    role: "CTO",
+    description: "Heads engineering, technical strategy, and architecture across web and mobile platforms.",
     image: "/placeholder.svg"
   },
   {
-    name: "Sneha Patel",
-    role: "UI/UX Designer",
-    description: "Creative designer focused on user-centered design and exceptional user experiences.",
+    name: "Dinesh Kumar",
+    role: "Head HR",
+    description: "Leads talent acquisition, people operations, and a high-performance culture.",
     image: "/placeholder.svg"
   }
 ];
 
 const milestones = [
-  { year: "2019", title: "Company Founded", description: "Bitnex Infotech was established with a vision to provide innovative software solutions." },
-  { year: "2020", title: "First Major Client", description: "Secured our first enterprise client and delivered a successful e-commerce platform." },
-  { year: "2021", title: "Team Expansion", description: "Grew our team to 5 developers and expanded service offerings." },
-  { year: "2022", title: "Cloud Expertise", description: "Became AWS certified partners and launched cloud migration services." },
-  { year: "2023", title: "Mobile Focus", description: "Expanded into mobile app development with React Native and Flutter." },
-  { year: "2024", title: "50+ Projects", description: "Reached milestone of 50+ successful projects and 30+ satisfied clients." }
+  { year: "2024", title: "Company Founded", description: "Bitnex Infotech was established with a vision to provide innovative software solutions." },
+  { year: "2024", title: "First Major Client", description: "Secured our first enterprise client and delivered a successful e-commerce platform." },
+  { year: "2024", title: "Team Expansion", description: "Grew our team to 25 members and expanded service offerings." },
+  { year: "2024", title: "Cloud Expertise", description: "Launched cloud migration and DevOps services with strong AWS expertise." },
+  { year: "2024", title: "Mobile Focus", description: "Expanded into mobile app development with React Native and Flutter." },
+  { year: "2025", title: "20+ Projects", description: "Reached milestone of 20+ successful projects and 10+ satisfied clients." }
 ];
 
 export default function AboutPage() {

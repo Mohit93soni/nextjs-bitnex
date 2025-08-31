@@ -1,5 +1,7 @@
 "use client";
 
+'use client';
+
 import { useState, useRef } from "react";
 import Link from "next/link";
 import Layout from "@/components/Layout";
@@ -216,10 +218,20 @@ export default function HomePage() {
   ];
 
   const stats = [
-    { label: "Projects Delivered", value: "100+" },
-    { label: "Happy Clients", value: "50+" },
-    { label: "Years Experience", value: "8+" },
+    { label: "Projects Delivered", value: "20+" },
+    { label: "Happy Clients", value: "10+" },
+    { label: "Founded", value: "2024" },
     { label: "Team Members", value: "25+" },
+  ];
+
+  const partnerships = [
+    {
+      name: "DesignRush",
+      href: "https://www.designrush.com/agency/profile/bitnex-infotech",
+      imageSrc:
+        "/images/designrush-badge.png",
+      alt: "View our DesignRush profile",
+    },
   ];
 
   return (
@@ -467,6 +479,42 @@ export default function HomePage() {
                   </div>
                 </CardContent>
               </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Partnerships Section */}
+      <section className="section-padding py-20">
+        <div className="container-max">
+          <div className="text-center mb-12">
+            <Badge variant="secondary" className="mb-4">
+              Partnerships
+            </Badge>
+            <h2 className="text-3xl md:text-4xl font-bold mb-6">
+              Partnership <span className="gradient-text">With</span>
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              We’re proud to partner with industry leaders.
+            </p>
+          </div>
+          <div className="flex flex-wrap justify-center items-center gap-8">
+            {partnerships.map((p) => (
+              <a
+                key={p.name}
+                href={p.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group inline-flex items-center justify-center rounded-xl border bg-background p-6 hover:shadow-lg transition"
+                aria-label={`${p.name} partnership`}
+              >
+                <img
+                  src={p.imageSrc}
+                  alt={p.alt}
+                  className="h-24 w-auto object-contain"
+                  loading="lazy"
+                />
+              </a>
             ))}
           </div>
         </div>
