@@ -9,10 +9,10 @@ export const metadata: Metadata = {
 };
 
 const stats = [
-  { label: "Projects Completed", value: "50+" },
-  { label: "Happy Clients", value: "30+" },
-  { label: "Years Experience", value: "5+" },
-  { label: "Team Members", value: "10+" }
+  { label: "Projects Completed", value: "20+" },
+  { label: "Happy Clients", value: "10+" },
+  { label: "Founded", value: "2024" },
+  { label: "Team Members", value: "25+" }
 ];
 
 const values = [
@@ -66,7 +66,7 @@ const team = [
 ];
 
 const milestones = [
-  { year: "2019", title: "Company Founded", description: "Bitnex Infotech was established with a vision to provide innovative software solutions." },
+  { year: "2024", title: "Company Founded", description: "Bitnex Infotech was established with a vision to provide innovative software solutions." },
   { year: "2020", title: "First Major Client", description: "Secured our first enterprise client and delivered a successful e-commerce platform." },
   { year: "2021", title: "Team Expansion", description: "Grew our team to 5 developers and expanded service offerings." },
   { year: "2022", title: "Cloud Expertise", description: "Became AWS certified partners and launched cloud migration services." },
