@@ -224,6 +224,16 @@ export default function HomePage() {
     { label: "Team Members", value: "25+" },
   ];
 
+  const partnerships = [
+    {
+      name: "DesignRush",
+      href: "https://www.designrush.com/agency/profile/bitnex-infotech",
+      imageSrc:
+        "https://cdn.builder.io/api/v1/image/assets%2F00bbbe83bd864c758548dbeefa6488bb%2Fe203e96c14c345d4bed74c1416ecb7da?format=webp&width=800",
+      alt: "View our DesignRush profile",
+    },
+  ];
+
   return (
     <Layout>
       {/* Hero Section */}
@@ -469,6 +479,42 @@ export default function HomePage() {
                   </div>
                 </CardContent>
               </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Partnerships Section */}
+      <section className="section-padding py-20">
+        <div className="container-max">
+          <div className="text-center mb-12">
+            <Badge variant="secondary" className="mb-4">
+              Partnerships
+            </Badge>
+            <h2 className="text-3xl md:text-4xl font-bold mb-6">
+              Title <span className="gradient-text">Partnership</span>
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              We’re proud to partner with industry leaders.
+            </p>
+          </div>
+          <div className="grid place-items-center gap-8 md:grid-cols-2 lg:grid-cols-3">
+            {partnerships.map((p) => (
+              <a
+                key={p.name}
+                href={p.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group inline-flex items-center justify-center rounded-xl border bg-background p-6 hover:shadow-lg transition"
+                aria-label={`${p.name} partnership`}
+              >
+                <img
+                  src={p.imageSrc}
+                  alt={p.alt}
+                  className="h-24 w-auto object-contain"
+                  loading="lazy"
+                />
+              </a>
             ))}
           </div>
         </div>
