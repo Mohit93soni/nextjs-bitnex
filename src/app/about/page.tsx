@@ -71,7 +71,7 @@ const milestones = [
   { year: "2024", title: "Team Expansion", description: "Grew our team to 25 members and expanded service offerings." },
   { year: "2024", title: "Cloud Expertise", description: "Launched cloud migration and DevOps services with strong AWS expertise." },
   { year: "2024", title: "Mobile Focus", description: "Expanded into mobile app development with React Native and Flutter." },
-  { year: "2024", title: "20+ Projects", description: "Reached milestone of 20+ successful projects and 10+ satisfied clients." }
+  { year: "2025", title: "20+ Projects", description: "Reached milestone of 20+ successful projects and 10+ satisfied clients." }
 ];
 
 export default function AboutPage() {
