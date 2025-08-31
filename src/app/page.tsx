@@ -125,13 +125,13 @@ export default function HomePage() {
         "Native and cross-platform mobile apps using React Native and Flutter.",
       features: ["React Native", "Flutter", "iOS & Android", "Cross-platform"],
     },
-    {
-      icon: Cloud,
-      title: "DevOps & Cloud",
-      description:
-        "Scalable cloud infrastructure and CI/CD pipelines on AWS and other platforms.",
-      features: ["AWS Services", "CI/CD Pipelines", "Docker", "Kubernetes"],
-    },
+    // {
+    //   icon: Cloud,
+    //   title: "DevOps & Cloud",
+    //   description:
+    //     "Scalable cloud infrastructure and CI/CD pipelines on AWS and other platforms.",
+    //   features: ["AWS Services", "CI/CD Pipelines", "Docker", "Kubernetes"],
+    // },
     {
       icon: Users,
       title: "Staffing Solutions",
@@ -551,11 +551,8 @@ export default function HomePage() {
                   <div className="space-y-4">
                     <ReCAPTCHA
                       ref={recaptchaRef}
-                      sitekey={
-                        process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY ||
-                        "6LcGPCAqAAAAAHGQzxIJSxcjdoKGtdvn7-xSGi2H"
-                      }
-                      onChange={(token) => setRecaptchaToken(token)}
+                      sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}
+                      onChange={(token: any) => setRecaptchaToken(token)}
                       onExpired={() => setRecaptchaToken(null)}
                     />
                     <Button
