@@ -1,6 +1,6 @@
 "use client";
 
-'use client';
+"use client";
 
 import { useState, useRef } from "react";
 import Link from "next/link";
@@ -228,9 +228,8 @@ export default function HomePage() {
     {
       name: "DesignRush",
       href: "https://www.designrush.com/agency/profile/bitnex-infotech",
-      imageSrc:
-        "/images/designrush-badge.png",
-      alt: "View our DesignRush profile",
+      imageSrc: "/images/designrush-badge.png",
+      alt: "Featured on the DesignRush list of top Web Development Companies",
     },
   ];
 
