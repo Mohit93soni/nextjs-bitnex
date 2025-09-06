@@ -598,7 +598,7 @@ export default function HomePage() {
                   <div className="space-y-4">
                     <ReCAPTCHA
                       ref={recaptchaRef}
-                      sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}
+                      sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || ""}
                       onChange={(token: any) => setRecaptchaToken(token)}
                       onExpired={() => setRecaptchaToken(null)}
                     />
