@@ -21,9 +21,11 @@ export default function Header() {
       <div className="container-max section-padding">
         <div className="flex h-16 items-center justify-between">
           <Link href="/" className="flex items-center space-x-2">
-            <div className="h-8 w-8 rounded-lg gradient-primary flex items-center justify-center">
-              <span className="text-white font-bold text-lg">B</span>
-            </div>
+            <img
+              src="https://cdn.builder.io/api/v1/image/assets%2F00bbbe83bd864c758548dbeefa6488bb%2F0da2c468c5924159b241ac023fdc0adf?format=webp&width=64"
+              alt="Bitnex logo"
+              className="h-8 w-auto rounded"
+            />
             <span className="text-xl font-bold gradient-text">
               Bitnex Infotech
             </span>
