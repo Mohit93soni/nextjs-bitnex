@@ -1,7 +1,7 @@
 "use client";
 
 
-import { useState, useRef } from "react";
+import { useState } from "react";
 import Link from "next/link";
 import dynamic from "next/dynamic";
 import Layout from "@/components/Layout";
@@ -35,7 +35,7 @@ export default function HomePage() {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [recaptchaToken, setRecaptchaToken] = useState<string | null>(null);
-  const recaptchaRef = useRef<any>(null);
+  const [captchaReset, setCaptchaReset] = useState(0);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -87,7 +87,7 @@ export default function HomePage() {
 
         // Reset reCAPTCHA
         setRecaptchaToken(null);
-        recaptchaRef.current?.reset();
+        setCaptchaReset((c) => c + 1);
       } else {
         toast({
           title: "Error sending request",
@@ -597,7 +597,7 @@ export default function HomePage() {
                   />
                   <div className="space-y-4">
                     <ReCAPTCHA
-                      ref={recaptchaRef}
+                      key={captchaReset}
                       sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || ""}
                       onChange={(token: any) => setRecaptchaToken(token)}
                       onExpired={() => setRecaptchaToken(null)}
