@@ -22,9 +22,9 @@ export default function Header() {
         <div className="flex h-16 items-center justify-between">
           <Link href="/" className="flex items-center space-x-2">
             <img
-              src="https://cdn.builder.io/api/v1/image/assets%2F00bbbe83bd864c758548dbeefa6488bb%2F0da2c468c5924159b241ac023fdc0adf?format=webp&width=64"
+              src="https://cdn.builder.io/api/v1/image/assets%2F00bbbe83bd864c758548dbeefa6488bb%2F0da2c468c5924159b241ac023fdc0adf?format=webp&width=96"
               alt="Bitnex logo"
-              className="h-8 w-auto rounded"
+              className="h-12 w-auto rounded"
             />
             <span className="text-xl font-bold gradient-text">
               Bitnex Infotech
