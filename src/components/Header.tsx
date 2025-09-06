@@ -20,10 +20,12 @@ export default function Header() {
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container-max section-padding">
         <div className="flex h-16 items-center justify-between">
-          <Link href="/" className="flex items-center space-x-2">
-            <div className="h-8 w-8 rounded-lg gradient-primary flex items-center justify-center">
-              <span className="text-white font-bold text-lg">B</span>
-            </div>
+          <Link href="/" className="flex items-center space-x-1">
+            <img
+              src="https://cdn.builder.io/api/v1/image/assets%2F00bbbe83bd864c758548dbeefa6488bb%2F0da2c468c5924159b241ac023fdc0adf?format=webp&width=96"
+              alt="Bitnex logo"
+              className="h-12 w-auto rounded"
+            />
             <span className="text-xl font-bold gradient-text">
               Bitnex Infotech
             </span>

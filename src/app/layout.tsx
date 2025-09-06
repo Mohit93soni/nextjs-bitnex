@@ -8,6 +8,14 @@ import { ThemeProvider } from "@/components/theme-provider";
 
 const inter = Inter({ subsets: ["latin"] });
 
+const LOGO_BASE = "https://cdn.builder.io/api/v1/image/assets%2F00bbbe83bd864c758548dbeefa6488bb%2F0da2c468c5924159b241ac023fdc0adf";
+const LOGO_16 = `${LOGO_BASE}?format=png&width=16`;
+const LOGO_32 = `${LOGO_BASE}?format=png&width=32`;
+const LOGO_48 = `${LOGO_BASE}?format=png&width=48`;
+const LOGO_180 = `${LOGO_BASE}?format=png&width=180`;
+const LOGO_512 = `${LOGO_BASE}?format=png&width=512`;
+const OG_IMAGE = `${LOGO_BASE}?format=png&width=1200`;
+
 export const metadata: Metadata = {
   metadataBase: new URL("https://bitnexinfotech.com"),
   title: {
@@ -16,10 +24,13 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: "/favicon.svg", type: "image/svg+xml" },
-      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+      { url: LOGO_16, sizes: "16x16", type: "image/png" },
+      { url: LOGO_32, sizes: "32x32", type: "image/png" },
+      { url: LOGO_48, sizes: "48x48", type: "image/png" },
+      { url: LOGO_512, sizes: "512x512", type: "image/png" },
     ],
-    shortcut: "/favicon.ico",
+    apple: [{ url: LOGO_180, sizes: "180x180", type: "image/png" }],
+    shortcut: LOGO_32,
   },
   description:
     "Bitnex Infotech delivers cutting-edge software solutions including web development, mobile apps, cloud infrastructure, and DevOps services. Transform your business with modern technology.",
@@ -60,7 +71,7 @@ export const metadata: Metadata = {
       "Transform your business with modern software solutions. Expert web development, mobile apps, and cloud infrastructure services.",
     images: [
       {
-        url: "/og-image.jpg",
+        url: OG_IMAGE,
         width: 1200,
         height: 630,
         alt: "Bitnex Infotech - Software Development Company",
@@ -72,7 +83,7 @@ export const metadata: Metadata = {
     title: "Bitnex Infotech - Cutting-edge Software Solutions",
     description:
       "Transform your business with modern software solutions. Expert web development, mobile apps, and cloud infrastructure services.",
-    images: ["/og-image.jpg"],
+    images: [OG_IMAGE],
     creator: "@bitnexinfotech",
   },
   alternates: {
@@ -95,7 +106,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={inter.className}>
+      <body className={inter.className} suppressHydrationWarning>
         <ThemeProvider
           attribute="class"
           defaultTheme="light"

@@ -1,9 +1,8 @@
 "use client";
 
-'use client';
-
-import { useState, useRef } from "react";
+import { useState } from "react";
 import { Metadata } from "next";
+import dynamic from "next/dynamic";
 import Layout from "@/components/Layout";
 import { Button } from "@/components/ui/button";
 import {
@@ -25,13 +24,13 @@ import {
 } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
 import { Mail, Phone, MapPin, Clock } from "lucide-react";
-import ReCAPTCHA from "react-google-recaptcha";
+const ReCAPTCHA = dynamic(() => import("react-google-recaptcha"), { ssr: false });
 
 export default function Contact() {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [recaptchaToken, setRecaptchaToken] = useState<string | null>(null);
-  const recaptchaRef = useRef<ReCAPTCHA>(null);
+  const [captchaReset, setCaptchaReset] = useState(0);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -92,7 +91,7 @@ export default function Contact() {
 
         // Reset reCAPTCHA
         setRecaptchaToken(null);
-        recaptchaRef.current?.reset();
+        setCaptchaReset((c) => c + 1);
       } else {
         toast({
           title: "Error sending message",
@@ -269,8 +268,8 @@ export default function Contact() {
 
                   <div className="space-y-4">
                     <ReCAPTCHA
-                      ref={recaptchaRef}
-                      sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}
+                      key={captchaReset}
+                      sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || ""}
                       onChange={(token: any) => setRecaptchaToken(token)}
                       onExpired={() => setRecaptchaToken(null)}
                     />
