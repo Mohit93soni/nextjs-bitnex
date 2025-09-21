@@ -1,6 +1,6 @@
 import Layout from "@/components/Layout";
 import { blogPosts, BlogPost } from "@/app/blog/posts-data";
-import { Calendar, Clock, Tag, ChevronRight } from "lucide-react";
+import { Calendar, Clock, Tag, ChevronRight, Share2, ArrowLeft, ArrowRight as ArrowRightIcon } from "lucide-react";
 import Link from "next/link";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
