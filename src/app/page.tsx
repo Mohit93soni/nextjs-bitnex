@@ -73,6 +73,11 @@ export default function HomePage() {
         }),
       });
 
+      if (!response.ok) {
+        const err = await response.text().catch(() => null);
+        throw new Error(err || `Server responded ${response.status}`);
+      }
+
       const result = await response.json();
 
       if (result.success) {
