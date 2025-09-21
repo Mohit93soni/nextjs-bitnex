@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import nodemailer from "nodemailer";
 import { z } from "zod";
+import { NextResponse, type NextRequest } from "next/server";
 
 // Validation schema
 const QuickQuoteSchema = z.object({
