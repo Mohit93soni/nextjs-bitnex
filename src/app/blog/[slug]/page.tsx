@@ -37,6 +37,16 @@ function PostContent({ post }: { post: BlogPost }) {
                 {para}
               </p>
             ))}
+            {section.codeBlocks?.map((block, cIdx) => (
+              <div key={`code-${cIdx}`} className="mt-4">
+                {block.caption && (
+                  <div className="text-xs text-muted-foreground mb-1">{block.caption}</div>
+                )}
+                <pre className="w-full overflow-x-auto rounded-md border bg-secondary/10 p-4 text-sm">
+                  <code>{block.code}</code>
+                </pre>
+              </div>
+            ))}
           </div>
         ))
       ) : (
