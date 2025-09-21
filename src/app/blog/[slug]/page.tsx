@@ -72,6 +72,12 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
   const post = blogPosts.find((p) => p.slug === params.slug);
   if (!post) return notFound();
   const morePosts = blogPosts.filter((p) => p.slug !== post.slug).slice(0, 3);
+  const sorted = [...blogPosts].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+  const idx = sorted.findIndex((p) => p.slug === post.slug);
+  const prev = idx > 0 ? sorted[idx - 1] : null;
+  const next = idx >= 0 && idx < sorted.length - 1 ? sorted[idx + 1] : null;
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://bitnexinfotech.com";
+  const shareUrl = `${siteUrl}/blog/${post.slug}`;
 
   return (
     <Layout>
