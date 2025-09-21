@@ -27,7 +27,7 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
 
 function PostContent({ post }: { post: BlogPost }) {
   return (
-    <article className="prose prose-slate max-w-none dark:prose-invert">
+    <article className="space-y-8">
       {post.content ? (
         post.content.map((section, idx) => (
           <div key={idx} className="mb-8">
