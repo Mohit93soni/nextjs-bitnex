@@ -1,7 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import nodemailer from "nodemailer";
 import { z } from "zod";
-import { NextResponse, type NextRequest } from "next/server";
 
 // Validation schema
 const ContactFormSchema = z.object({
@@ -27,14 +26,17 @@ async function verifyRecaptcha(token: string): Promise<boolean> {
     params.append("secret", secretKey);
     params.append("response", token);
 
-    const response = await fetch("https://www.google.com/recaptcha/api/siteverify", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/x-www-form-urlencoded",
-        Accept: "application/json",
-      },
-      body: params.toString(),
-    });
+    const response = await fetch(
+      "https://www.google.com/recaptcha/api/siteverify",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+          Accept: "application/json",
+        },
+        body: params.toString(),
+      }
+    );
 
     if (!response.ok) {
       console.error("reCAPTCHA verification HTTP error", response.status);
