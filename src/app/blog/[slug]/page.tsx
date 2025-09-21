@@ -196,6 +196,32 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
         </div>
       </section>
 
+      {/* Prev / Next */}
+      <section className="py-10">
+        <div className="container-max section-padding">
+          <div className="grid gap-6 md:grid-cols-2">
+            {prev && (
+              <Link href={`/blog/${prev.slug}`} className="group block border rounded-lg p-5 hover:bg-accent/30 transition-colors">
+                <div className="text-xs text-muted-foreground mb-1">Previous</div>
+                <div className="flex items-center gap-2">
+                  <ArrowLeft className="h-4 w-4 text-muted-foreground" />
+                  <span className="font-medium group-hover:text-primary">{prev.title}</span>
+                </div>
+              </Link>
+            )}
+            {next && (
+              <Link href={`/blog/${next.slug}`} className="group block border rounded-lg p-5 hover:bg-accent/30 transition-colors text-right">
+                <div className="text-xs text-muted-foreground mb-1">Next</div>
+                <div className="flex items-center gap-2 justify-end">
+                  <span className="font-medium group-hover:text-primary">{next.title}</span>
+                  <ArrowRightIcon className="h-4 w-4 text-muted-foreground" />
+                </div>
+              </Link>
+            )}
+          </div>
+        </div>
+      </section>
+
       {/* More articles */}
       <section className="py-16 bg-secondary/5">
         <div className="container-max section-padding">
