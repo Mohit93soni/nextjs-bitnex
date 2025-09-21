@@ -39,7 +39,11 @@ function PostContent({ post }: { post: BlogPost }) {
       {post.content ? (
         post.content.map((section, idx) => (
           <div key={idx} className="mb-8">
-            {section.heading && <h2 className="mb-3">{section.heading}</h2>}
+            {section.heading && (
+              <h2 id={slugify(section.heading)} className="mb-3 scroll-mt-24">
+                {section.heading}
+              </h2>
+            )}
             {section.paragraphs.map((para, pIdx) => (
               <p key={pIdx} className="leading-7 text-muted-foreground">
                 {para}
