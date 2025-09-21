@@ -1,6 +1,5 @@
 "use client";
 
-
 import { useState } from "react";
 import Link from "next/link";
 import dynamic from "next/dynamic";
@@ -17,7 +16,9 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Badge } from "@/components/ui/badge";
 import { useToast } from "@/hooks/use-toast";
-const ReCAPTCHA = dynamic(() => import("react-google-recaptcha"), { ssr: false });
+const ReCAPTCHA = dynamic(() => import("react-google-recaptcha"), {
+  ssr: false,
+});
 import {
   ArrowRight,
   Code,
@@ -235,6 +236,24 @@ export default function HomePage() {
       href: "https://www.designrush.com/agency/profile/bitnex-infotech",
       imageSrc: "/images/designrush-badge.png",
       alt: "Featured on the DesignRush list of top Web Development Companies",
+    },
+    {
+      name: "Clutch",
+      href: "https://clutch.co/profile/bitnex-infotech?_gl=1*11wqnrl*_gcl_au*MTQwODU1ODgzMi4xNzUwOTQ3Njc3LjQ3MjY0MjY0NC4xNzU4MTI3NDgyLjE3NTgxMjc1MzM.*FPAU*MTQwODU1ODgzMi4xNzUwOTQ3Njc3*_ga*MTg2MTc1NzU4Mi4xNzUwOTQ3Njc3*_ga_D0WFGX8X3V*czE3NTgxMjczMTEkbzUkZzEkdDE3NTgxMjc3ODgkajMwJGwwJGgxNzY2MTI0MjYy*_fplc*anV0TGphbTBxdW9KMjdZaHg1SGR2bE9aVlZvTXVTNmN5RDklMkZIZnlRa3NkOE44YU1HUDBieW9Ma0tzRHNreWJxQ1o0dVFNUG9LbEFKd2ZZTmhid0hpbDNxd1hhSEdMazF2c1E4cmdqbHhTWU1QWDJhNjhqQSUyRlc0MlBEWmFYZyUzRCUzRA",
+      imageSrc: "/images/clutch.webp",
+      alt: "Clutch Top B2B Company",
+    },
+    {
+      name: "Trustpilot",
+      href: "https://www.trustpilot.com/review/bitnexinfotech.com",
+      imageSrc: "/images/tp_logo.png",
+      alt: "Trustpilot Reviews",
+    },
+    {
+      name: "TechReviewer",
+      href: "https://techreviewer.co/companies/bitnexinfotech",
+      imageSrc: "/images/tr.png",
+      alt: "Trustpilot Reviews",
     },
   ];
 
