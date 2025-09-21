@@ -25,6 +25,14 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
   };
 }
 
+function slugify(text: string) {
+  return text
+    .toLowerCase()
+    .replace(/[^a-z0-9\s-]/g, "")
+    .trim()
+    .replace(/\s+/g, "-");
+}
+
 function PostContent({ post }: { post: BlogPost }) {
   return (
     <article className="space-y-8">
