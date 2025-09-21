@@ -381,6 +381,111 @@ export async function GET() {
     category: "Database",
     tags: ["Database", "SQL", "NoSQL"],
     image: "/images/33.png",
+    content: [
+      {
+        heading: "Introduction",
+        paragraphs: [
+          "You have classrooms, students, teachers, courses, grades, semesters, etc. Many entities having interesting relationships with each other. Good domain to draw examples from. Also, hopefully, familiar to most readers.",
+          "Let’s start with Student table. What do we want to store there and how would we design it? Assume we want to start with storing first name, last name, and email. Here is the first shot at it:",
+        ],
+        codeBlocks: [
+          {
+            language: "sql",
+            code: `create table Student_v1
+(
+   FirstName nvarchar(32),
+   LastName  nvarchar(32),
+   Email     varchar(64)
+)`
+          }
+        ]
+      },
+      {
+        heading: "Keys and unique indexes",
+        paragraphs: [
+          "That works, however this entity lacks the identity — not in the specific Sql Server sense (keyword identity), but in the sense that we don’t have a way to uniquely identify particular student.",
+          "The term we are looking for here is key. This is the term from logical design. Corresponding concept in physical design domain is unique index.",
+          "We have an attribute that we can use as a key. It’s Email. Let’s modify our table definition accordingly:",
+        ],
+        codeBlocks: [
+          {
+            language: "sql",
+            code: `create table Student_v2
+(
+   FirstName nvarchar(32),
+   LastName  nvarchar(32),
+   Email     varchar(64),
+   index ixu_Student_v2_Email unique (Email)
+)`
+          }
+        ]
+      },
+      {
+        heading: "Index naming conventions",
+        paragraphs: [
+          "What’s going on here? Well, we just defined index, making column Email unique. Now no two rows in a table can have the same value of Email column and, therefore, if we know Email, we can uniquely identify entity instance.",
+          "Pattern: index naming conventions. As you noticed, we gave this index name ixu_Student_v2_Email. It consists of three parts:",
+          "Prefix ixu (ix stands for index, u stands for unique)",
+          "Table name (Student_v2)",
+          "Column list (Email)",
+          "It is convenient in many cases to know the type of database object and some of its properties just by looking at its name. Reasonable exception could be made for database objects used most often — tables, functions, and stored procedures.",
+        ]
+      },
+      {
+        heading: "Clustered index",
+        paragraphs: [
+          "Any table needs to have one clustered index. We will dwell on the choice of clustered key a bit later. How do we make our index clustered? Easy, just add the word clustered to the index definition:",
+        ],
+        codeBlocks: [
+          {
+            language: "sql",
+            code: `create table Student_v2
+(
+   FirstName nvarchar(32),
+   LastName  nvarchar(32),
+   Email     varchar(64),
+   index ixuc_Student_v2_Email unique clustered (Email)
+)`
+          }
+        ],
+      },
+      {
+        heading: "Index tree levels and page size",
+        paragraphs: [
+          "Please note that prefix now contains c, denoting the fact that the index is clustered. The leaf nodes of the index are now data pages and contain all data from corresponding rows. In our case, FirstName, LastName and Email.",
+          "It is also worth noting that the size of any page, including non-leaf index page, is 8K in Sql Server, which gives us an easy way to estimate how many levels we would have in the index. Let’s assume average length of email address to be 40 bytes and total number of students to be 100 million (really big college). The number of keys per page is 8K/40 ≈ 200. Level 2 capacity is 200*200 = 40 thousand, level 3 = 8 million, level 4 = 1.6 billion. So our index will have 4 levels of non-leaf nodes (one root and three intermediate).",
+          "It is also worth noting that every level of the tree is also a doubly-linked list, allowing fast sequential reads (more on it later).",
+        ]
+      },
+      {
+        heading: "Non-clustered index",
+        paragraphs: [
+          "Imagine now that we need to search students by their last names — in case we don’t know their email. Since last name is not unique, we want back a list of all students with given last name, and we want it fast. Scanning through all 100 million records would take too long. Let’s define non-clustered index on LastName:",
+        ],
+        codeBlocks: [
+          {
+            language: "sql",
+            code: `create table Student_v2
+(
+   FirstName nvarchar(32),
+   LastName  nvarchar(32),
+   Email     varchar(64),
+   index ixuc_Student_v2_Email unique clustered (Email),
+   index ix_Student_v2_LastName (LastName)
+)`
+          }
+        ],
+        paragraphs2: []
+      },
+      {
+        heading: "How it works",
+        paragraphs: [
+          "The absence of keywords unique and clustered means that the index is non-unique and non-clustered (you can only have one clustered index per table).",
+          "How does it work? The search starts from root page and goes through all intermediate levels to find first record with given last name in the last (leaf) level. Then, using next page link chain, it starts reading all the leaf pages until it finds one with the next value of LastName.",
+          "Assuming that selectivity of our LastName is 0.01%, we only had to read through 10 thousand rows out of total 100 million.",
+        ]
+      }
+    ]
   },
   {
     id: 7,
