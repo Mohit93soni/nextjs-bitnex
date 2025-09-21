@@ -1,6 +1,13 @@
+export type BlogCodeBlock = {
+  code: string;
+  language?: string;
+  caption?: string;
+};
+
 export type BlogSection = {
   heading?: string;
   paragraphs: string[];
+  codeBlocks?: BlogCodeBlock[];
 };
 
 export type BlogPost = {
@@ -32,6 +39,215 @@ export const blogPosts: BlogPost[] = [
     tags: ["Next.js", "React", "Performance"],
     image: "/images/99.png",
     featured: true,
+    content: [
+      {
+        paragraphs: [
+          "When I first started with React, I loved how easy it was to build UIs. But the moment I needed server-side rendering, SEO optimization, or backend APIs, everything got messy. That’s where Next.js came to the rescue.",
+          "With Next.js 13+ (and now 14), things got even better thanks to the App Router, Server Components, and powerful data-fetching patterns. This article is your in-depth guide to building scalable, full-stack apps with Next.js.",
+        ],
+      },
+      {
+        heading: "1. Why Choose Next.js Over Plain React?",
+        paragraphs: [
+          "React is amazing for the frontend, but:",
+          "• It doesn’t handle SEO well (everything renders on the client).",
+          "• It doesn’t come with routing out of the box.",
+          "• You need extra setup for API routes, image optimization, and caching.",
+          "Next.js fixes all that by adding:",
+          "✅ File-based routing (app/ or pages/)",
+          "✅ Server-Side Rendering (SSR) and Static Site Generation (SSG)",
+          "✅ Built-in API routes (no need for Express for small apps)",
+          "✅ Image optimization with next/image",
+          "✅ Edge + Serverless deployment ready",
+          "In short → React is the engine, but Next.js is the sports car built around it.",
+        ],
+      },
+      {
+        heading: "2. The App Router: A Game-Changer",
+        paragraphs: [
+          "Older versions of Next.js used the pages/ directory. But now, with Next.js 13+, we have the App Router (app/), which makes things way more powerful.",
+          "Key differences:",
+          "• Every folder in app/ can be a route.",
+          "• Uses React Server Components (RSCs) by default → faster and lighter.",
+          "• Built-in layout support (no need to repeat navbar/footer code).",
+          "If you go to /dashboard/settings, Next.js will render the root layout, then the dashboard layout, then the settings page. This is nested layouts made easy.",
+        ],
+        codeBlocks: [
+          {
+            language: "txt",
+            code: `app/
+├── layout.tsx   // shared layout
+├── page.tsx     // homepage
+├── about/
+│   └── page.tsx
+├── dashboard/
+│   ├── layout.tsx
+│   ├── page.tsx
+│   └── settings/
+│       └── page.tsx`,
+            caption: "App Router folder structure with nested layouts",
+          },
+        ],
+      },
+      {
+        heading: "3. Rendering Modes in Next.js",
+        paragraphs: [
+          "Next.js gives you control over how pages render:",
+          "• Static Site Generation (SSG) — pre-renders at build time",
+        ],
+        codeBlocks: [
+          {
+            language: "ts",
+            code: `export async function generateStaticParams() {
+  return [{ id: "1" }, { id: "2" }];
+}`,
+            caption: "SSG example for dynamic routes",
+          },
+          {
+            language: "tsx",
+            code: `export default async function Page() {
+  const res = await fetch("https://api.example.com/data", { cache: "no-store" });
+  const data = await res.json();
+  return <div>{data.title}</div>;
+}`,
+            caption: "SSR — fetches data on every request",
+          },
+          {
+            language: "tsx",
+            code: `"use client";
+import { useEffect, useState } from "react";
+
+export default function ClientPage() {
+  const [data, setData] = useState<any>(null);
+  useEffect(() => {
+    fetch("/api/data")
+      .then((res) => res.json())
+      .then(setData);
+  }, []);
+  return <div>{data?.title}</div>;
+}`,
+            caption: "CSR — fetch on the client",
+          },
+        ],
+      },
+      {
+        heading: "4. API Routes in Next.js",
+        paragraphs: [
+          "You don’t always need a separate backend. With Next.js, you can create APIs directly inside your project.",
+        ],
+        codeBlocks: [
+          {
+            language: "ts",
+            code: `// app/api/hello/route.ts
+import { NextResponse } from "next/server";
+
+export async function GET() {
+  return NextResponse.json({ message: "Hello from Next.js API!" });
+}`,
+          },
+        ],
+      },
+      {
+        heading: "5. Authentication with Next.js",
+        paragraphs: [
+          "Authentication is one of the trickiest parts in web development. Thankfully, NextAuth.js works seamlessly with Next.js.",
+          "Install NextAuth:",
+        ],
+        codeBlocks: [
+          { language: "bash", code: "npm install next-auth" },
+          {
+            language: "ts",
+            code: `// app/api/auth/[...nextauth]/route.ts
+import NextAuth from "next-auth";
+import GitHubProvider from "next-auth/providers/github";
+
+export const authOptions = {
+  providers: [
+    GitHubProvider({
+      clientId: process.env.GITHUB_ID!,
+      clientSecret: process.env.GITHUB_SECRET!,
+    }),
+  ],
+};
+
+const handler = NextAuth(authOptions);
+export { handler as GET, handler as POST };`,
+            caption: "NextAuth route handler",
+          },
+          {
+            language: "tsx",
+            code: `"use client";
+import { useSession, signIn, signOut } from "next-auth/react";
+
+export default function Navbar() {
+  const { data: session } = useSession();
+
+  return (
+    <nav>
+      {session ? (
+        <>
+          <span>Welcome, {session.user?.name}</span>
+          <button onClick={() => signOut()}>Logout</button>
+        </>
+      ) : (
+        <button onClick={() => signIn("github")}>Login with GitHub</button>
+      )}
+    </nav>
+  );
+}`,
+            caption: "Using NextAuth in a client component",
+          },
+        ],
+      },
+      {
+        heading: "6. Database Integration (Prisma + Next.js)",
+        paragraphs: [
+          "If you want a real backend, you’ll need a database. The best combo is Prisma + PostgreSQL.",
+          "Install and initialize Prisma:",
+        ],
+        codeBlocks: [
+          { language: "bash", code: "npm install prisma @prisma/client\nnpx prisma init" },
+          {
+            language: "prisma",
+            code: `// prisma/schema.prisma
+model User {
+  id    Int    @id @default(autoincrement())
+  name  String
+  email String @unique
+}`,
+            caption: "Prisma schema example",
+          },
+          {
+            language: "ts",
+            code: `import { PrismaClient } from "@prisma/client";
+const prisma = new PrismaClient();
+
+export async function GET() {
+  const users = await prisma.user.findMany();
+  return Response.json(users);
+}`,
+            caption: "Using Prisma in a route handler",
+          },
+        ],
+      },
+      {
+        heading: "7. Deployment",
+        paragraphs: [
+          "The best place to deploy a Next.js app is Vercel (made by the same team).",
+          "Push your code to GitHub, import the repo into Vercel, and deploy. Vercel automatically handles serverless functions, edge caching, and image optimization.",
+        ],
+      },
+      {
+        heading: "8. Key Takeaways",
+        paragraphs: [
+          "• Next.js turns React into a production-ready framework.",
+          "• Use the App Router for layouts and server components.",
+          "• Choose the right rendering mode (SSG, SSR, CSR) based on your needs.",
+          "• Use built-in API routes for small backends.",
+          "• For auth → NextAuth.js. For DB → Prisma. Deploy easily on Vercel.",
+        ],
+      },
+    ],
   },
   {
     id: 2,
