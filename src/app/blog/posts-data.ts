@@ -412,9 +412,9 @@ type Test2 = IsString<number>; // "No"`,
         codeBlocks: [
           {
             language: "ts",
-            code: `type EventNames<T extends string> = \`${T}Started\` | \`${T}Ended\`;
+            code: `type EventNames<T extends string> = \`\${T}Started\` | \`\${T}Ended\`;
 
-type AppEvents = EventNames<"Download">; // "DownloadStarted" | "DownloadEnded"`,
+ type AppEvents = EventNames<"Download">; // "DownloadStarted" | "DownloadEnded"`,
           },
         ],
       },
