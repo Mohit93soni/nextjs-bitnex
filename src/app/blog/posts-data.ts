@@ -52,7 +52,7 @@ export const blogPosts: BlogPost[] = [
           "React is amazing for the frontend, but:",
           "• It doesn’t handle SEO well (everything renders on the client).",
           "• It doesn’t come with routing out of the box.",
-          "• You need extra setup for API routes, image optimization, and caching.",
+          "�� You need extra setup for API routes, image optimization, and caching.",
           "Next.js fixes all that by adding:",
           "✅ File-based routing (app/ or pages/)",
           "✅ Server-Side Rendering (SSR) and Static Site Generation (SSG)",
@@ -474,8 +474,7 @@ export async function GET() {
    index ix_Student_v2_LastName (LastName)
 )`
           }
-        ],
-        paragraphs2: []
+        ]
       },
       {
         heading: "How it works",
