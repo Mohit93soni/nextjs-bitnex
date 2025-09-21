@@ -1,6 +1,8 @@
 import { Metadata } from "next";
 import Layout from "@/components/Layout";
 import { Calendar, Clock, ArrowRight, Tag } from "lucide-react";
+import Link from "next/link";
+import { blogPosts, categories } from "@/app/blog/posts-data";
 
 export const metadata: Metadata = {
   title: "Blog - Bitnex Infotech | Software Development Insights & Tutorials",
@@ -9,137 +11,6 @@ export const metadata: Metadata = {
   keywords:
     "software development blog, web development, mobile apps, react tutorials, next.js, cloud computing, programming",
 };
-
-const blogPosts = [
-  {
-    id: 1,
-    title: "Building Scalable React Applications with Next.js 14",
-    excerpt:
-      "Learn how to build high-performance, SEO-friendly React applications using the latest features of Next.js 14, including the App Router and Server Components.",
-    author: "Mohit Soni",
-    date: "2024-01-15",
-    readTime: "8 min read",
-    category: "Web Development",
-    tags: ["Next.js", "React", "Performance"],
-    image: "/images/99.png",
-    featured: true,
-  },
-  {
-    id: 2,
-    title: "Mobile App Development: React Native vs Flutter",
-    excerpt:
-      "A comprehensive comparison of React Native and Flutter for cross-platform mobile development, including performance, development experience, and ecosystem.",
-    author: "Priya Sharma",
-    date: "2024-01-10",
-    readTime: "12 min read",
-    category: "Mobile Development",
-    tags: ["React Native", "Flutter", "Mobile"],
-    image: "/images/77.png",
-  },
-  {
-    id: 3,
-    title: "Cloud Migration Strategies for Modern Applications",
-    excerpt:
-      "Best practices for migrating applications to AWS cloud, including containerization, database migration, and implementing CI/CD pipelines.",
-    author: "Rahul Kumar",
-    date: "2024-01-05",
-    readTime: "15 min read",
-    category: "Cloud Computing",
-    tags: ["AWS", "Cloud Migration", "DevOps"],
-    image: "/images/55.png",
-  },
-  {
-    id: 4,
-    title: "TypeScript Best Practices for Large-Scale Applications",
-    excerpt:
-      "Essential TypeScript patterns and practices for building maintainable, type-safe applications at scale with real-world examples.",
-    author: "Sneha Patel",
-    date: "2023-12-28",
-    readTime: "10 min read",
-    category: "Programming",
-    tags: ["TypeScript", "JavaScript", "Best Practices"],
-    image: "/images/66.png",
-  },
-  {
-    id: 5,
-    title: "Implementing Real-time Features with WebSockets",
-    excerpt:
-      "How to build real-time applications using WebSockets, including chat systems, live notifications, and collaborative features.",
-    author: "Mohit Soni",
-    date: "2023-12-20",
-    readTime: "14 min read",
-    category: "Web Development",
-    tags: ["WebSockets", "Real-time", "Node.js"],
-    image: "/images/44.png",
-  },
-  {
-    id: 6,
-    title: "Database Design Patterns for Modern Web Apps",
-    excerpt:
-      "Explore common database design patterns, normalization strategies, and how to choose between SQL and NoSQL databases for your project.",
-    author: "Priya Sharma",
-    date: "2023-12-15",
-    readTime: "11 min read",
-    category: "Database",
-    tags: ["Database", "SQL", "NoSQL"],
-    image: "/images/33.png",
-  },
-  {
-    id: 7,
-    title: "Security Best Practices for Web Applications",
-    excerpt:
-      "Essential security measures every developer should implement, including authentication, authorization, data validation, and protection against common vulnerabilities.",
-    author: "Rahul Kumar",
-    date: "2023-12-10",
-    readTime: "13 min read",
-    category: "Security",
-    tags: ["Security", "Authentication", "Web Security"],
-    image: "/images/22.png",
-  },
-  {
-    id: 8,
-    title: "Performance Optimization Techniques for React Apps",
-    excerpt:
-      "Advanced techniques to optimize React application performance, including code splitting, lazy loading, memoization, and bundle analysis.",
-    author: "Sneha Patel",
-    date: "2023-12-05",
-    readTime: "9 min read",
-    category: "Performance",
-    tags: ["React", "Performance", "Optimization"],
-    image: "/images/11.png",
-  },
-];
-
-const categories = [
-  { name: "All", count: blogPosts.length },
-  {
-    name: "Web Development",
-    count: blogPosts.filter((post) => post.category === "Web Development")
-      .length,
-  },
-  {
-    name: "Mobile Development",
-    count: blogPosts.filter((post) => post.category === "Mobile Development")
-      .length,
-  },
-  {
-    name: "Cloud Computing",
-    count: blogPosts.filter((post) => post.category === "Cloud Computing")
-      .length,
-  },
-  {
-    name: "Programming",
-    count: blogPosts.filter((post) => post.category === "Programming").length,
-  },
-  {
-    name: "Security",
-    count: blogPosts.filter((post) => post.category === "Security").length,
-  },
-  {
-    name: "Performance",
-    count: blogPosts.filter((post) => post.category === "Performance").length,
-  },
-];
 
 const featuredPost = blogPosts.find((post) => post.featured);
 const regularPosts = blogPosts.filter((post) => !post.featured);
@@ -176,13 +47,16 @@ export default function BlogPage() {
 
             <div className="bg-background rounded-lg border overflow-hidden">
               <div className="grid gap-0 lg:grid-cols-2">
-                <div className="aspect-video lg:aspect-square bg-gradient-to-br from-primary/10 to-secondary/10">
+                <Link
+                  href={`/blog/${featuredPost.slug}`}
+                  className="aspect-video lg:aspect-square bg-gradient-to-br from-primary/10 to-secondary/10 block"
+                >
                   <img
                     src={featuredPost.image}
                     alt={featuredPost.title}
                     className="w-full h-full object-fill"
                   />
-                </div>
+                </Link>
                 <div className="p-8 lg:p-12 flex flex-col justify-center">
                   <div className="flex items-center gap-4 text-sm text-muted-foreground mb-4">
                     <span className="bg-primary/10 text-primary px-2 py-1 rounded text-xs font-medium">
@@ -211,9 +85,12 @@ export default function BlogPage() {
                     <span className="text-sm text-muted-foreground">
                       By {featuredPost.author}
                     </span>
-                    <button className="inline-flex items-center gap-2 text-primary hover:text-primary/80 transition-colors">
+                    <Link
+                      href={`/blog/${featuredPost.slug}`}
+                      className="inline-flex items-center gap-2 text-primary hover:text-primary/80 transition-colors"
+                    >
                       Read More <ArrowRight className="h-4 w-4" />
-                    </button>
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -251,13 +128,16 @@ export default function BlogPage() {
                 key={post.id}
                 className="group bg-background rounded-lg border overflow-hidden hover:shadow-lg transition-all duration-300"
               >
-                <div className="aspect-video bg-gradient-to-br from-primary/10 to-secondary/10">
+                <Link
+                  href={`/blog/${post.slug}`}
+                  className="aspect-video bg-gradient-to-br from-primary/10 to-secondary/10 block"
+                >
                   <img
                     src={post.image}
                     alt={post.title}
                     className="w-full h-full object-fit group-hover:scale-105 transition-transform duration-300"
                   />
-                </div>
+                </Link>
                 <div className="p-6">
                   <div className="flex items-center gap-2 mb-3">
                     <span className="bg-primary/10 text-primary px-2 py-1 rounded text-xs font-medium">
@@ -276,9 +156,14 @@ export default function BlogPage() {
                     </div>
                   </div>
 
-                  <h3 className="text-xl font-semibold mb-3 group-hover:text-primary transition-colors">
-                    {post.title}
-                  </h3>
+                  <Link
+                    href={`/blog/${post.slug}`}
+                    className="block"
+                  >
+                    <h3 className="text-xl font-semibold mb-3 group-hover:text-primary transition-colors">
+                      {post.title}
+                    </h3>
+                  </Link>
 
                   <p className="text-muted-foreground text-sm mb-4 line-clamp-3">
                     {post.excerpt}
@@ -303,9 +188,12 @@ export default function BlogPage() {
                     <span className="text-sm text-muted-foreground">
                       By {post.author}
                     </span>
-                    <button className="inline-flex items-center gap-1 text-primary hover:text-primary/80 transition-colors text-sm">
+                    <Link
+                      href={`/blog/${post.slug}`}
+                      className="inline-flex items-center gap-1 text-primary hover:text-primary/80 transition-colors text-sm"
+                    >
                       Read More <ArrowRight className="h-3 w-3" />
-                    </button>
+                    </Link>
                   </div>
                 </div>
               </article>

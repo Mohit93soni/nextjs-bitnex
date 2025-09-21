@@ -14,19 +14,34 @@ const QuickQuoteSchema = z.object({
 async function verifyRecaptcha(token: string): Promise<boolean> {
   try {
     const secretKey = process.env.RECAPTCHA_SECRET_KEY;
+    if (!secretKey) {
+      console.error("reCAPTCHA secret key is not set");
+      return false;
+    }
+
+    const params = new URLSearchParams();
+    params.append("secret", secretKey);
+    params.append("response", token);
+
     const response = await fetch(
       "https://www.google.com/recaptcha/api/siteverify",
       {
         method: "POST",
         headers: {
           "Content-Type": "application/x-www-form-urlencoded",
+          Accept: "application/json",
         },
-        body: `secret=${secretKey}&response=${token}`,
+        body: params.toString(),
       }
     );
 
+    if (!response.ok) {
+      console.error("reCAPTCHA verification HTTP error", response.status);
+      return false;
+    }
+
     const data = await response.json();
-    return data.success;
+    return Boolean(data?.success);
   } catch (error) {
     console.error("reCAPTCHA verification error:", error);
     return false;
