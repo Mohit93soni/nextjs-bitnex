@@ -140,7 +140,52 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
           <div className="lg:col-span-8">
             <PostContent post={post} />
           </div>
-          <aside className="lg:col-span-4">
+          <aside className="lg:col-span-4 space-y-6">
+            {post.content && post.content.some((s) => s.heading) && (
+              <div className="bg-background border rounded-lg p-6">
+                <h3 className="text-lg font-semibold mb-3">On this page</h3>
+                <ul className="space-y-2 text-sm">
+                  {post.content!.filter((s) => s.heading).map((s, i) => (
+                    <li key={`toc-${i}`}>
+                      <a href={`#${slugify(s.heading!)}`} className="text-muted-foreground hover:text-primary">
+                        {s.heading}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+
+            <div className="bg-background border rounded-lg p-6">
+              <h3 className="text-lg font-semibold mb-3">Share</h3>
+              <div className="flex gap-3">
+                <a
+                  className="inline-flex items-center gap-2 text-sm bg-secondary px-3 py-2 rounded hover:bg-secondary/80"
+                  href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(post.title)}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Share2 className="h-4 w-4" /> X
+                </a>
+                <a
+                  className="inline-flex items-center gap-2 text-sm bg-secondary px-3 py-2 rounded hover:bg-secondary/80"
+                  href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Share2 className="h-4 w-4" /> LinkedIn
+                </a>
+                <a
+                  className="inline-flex items-center gap-2 text-sm bg-secondary px-3 py-2 rounded hover:bg-secondary/80"
+                  href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Share2 className="h-4 w-4" /> Facebook
+                </a>
+              </div>
+            </div>
+
             <div className="bg-background border rounded-lg p-6">
               <h3 className="text-lg font-semibold mb-3">About the author</h3>
               <p className="text-sm text-muted-foreground">
