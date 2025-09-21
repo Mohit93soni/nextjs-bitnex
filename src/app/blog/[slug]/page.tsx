@@ -1,0 +1,155 @@
+import Layout from "@/components/Layout";
+import { blogPosts, BlogPost } from "@/app/blog/posts-data";
+import { Calendar, Clock, Tag, ChevronRight } from "lucide-react";
+import Link from "next/link";
+import { Metadata } from "next";
+import { notFound } from "next/navigation";
+
+export function generateStaticParams() {
+  return blogPosts.map((post) => ({ slug: post.slug }));
+}
+
+export function generateMetadata({ params }: { params: { slug: string } }): Metadata {
+  const post = blogPosts.find((p) => p.slug === params.slug);
+  if (!post) return { title: "Article not found" };
+  return {
+    title: `${post.title} | Blog`,
+    description: post.excerpt,
+    keywords: post.tags,
+    openGraph: {
+      title: post.title,
+      description: post.excerpt,
+      type: "article",
+      images: [{ url: post.image }],
+    },
+  };
+}
+
+function PostContent({ post }: { post: BlogPost }) {
+  return (
+    <article className="prose prose-slate max-w-none dark:prose-invert">
+      {post.content ? (
+        post.content.map((section, idx) => (
+          <div key={idx} className="mb-8">
+            {section.heading && <h2 className="mb-3">{section.heading}</h2>}
+            {section.paragraphs.map((para, pIdx) => (
+              <p key={pIdx} className="leading-7 text-muted-foreground">
+                {para}
+              </p>
+            ))}
+          </div>
+        ))
+      ) : (
+        <p className="text-muted-foreground">Full article coming soon.</p>
+      )}
+    </article>
+  );
+}
+
+export default function BlogPostPage({ params }: { params: { slug: string } }) {
+  const post = blogPosts.find((p) => p.slug === params.slug);
+  if (!post) return notFound();
+  const morePosts = blogPosts.filter((p) => p.slug !== post.slug).slice(0, 3);
+
+  return (
+    <Layout>
+      {/* Header */}
+      <section className="relative overflow-hidden py-10 lg:py-16">
+        <div className="container-max section-padding">
+          <nav className="mb-4 text-sm text-muted-foreground flex items-center gap-2">
+            <Link href="/" className="hover:text-primary">Home</Link>
+            <ChevronRight className="h-4 w-4" />
+            <Link href="/blog" className="hover:text-primary">Blog</Link>
+            <ChevronRight className="h-4 w-4" />
+            <span className="text-foreground">{post.title}</span>
+          </nav>
+          <h1 className="text-3xl md:text-5xl font-bold tracking-tight mb-4">
+            {post.title}
+          </h1>
+          <div className="flex flex-wrap items-center gap-4 text-sm text-muted-foreground">
+            <span className="bg-primary/10 text-primary px-2 py-1 rounded text-xs font-medium">
+              {post.category}
+            </span>
+            <div className="flex items-center gap-1">
+              <Calendar className="h-4 w-4" />
+              {new Date(post.date).toLocaleDateString("en-US", {
+                year: "numeric",
+                month: "long",
+                day: "numeric",
+              })}
+            </div>
+            <div className="flex items-center gap-1">
+              <Clock className="h-4 w-4" />
+              {post.readTime}
+            </div>
+            <div className="flex items-center gap-2">
+              <Tag className="h-4 w-4" />
+              <div className="flex flex-wrap gap-1">
+                {post.tags.map((t, i) => (
+                  <span key={t} className="text-xs">
+                    {t}
+                    {i < post.tags.length - 1 && ","}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Cover */}
+      <section className="pb-6">
+        <div className="container-max section-padding">
+          <div className="rounded-lg overflow-hidden border bg-secondary/10">
+            <img src={post.image} alt={post.title} className="w-full h-auto object-cover" />
+          </div>
+        </div>
+      </section>
+
+      {/* Content */}
+      <section className="py-10">
+        <div className="container-max section-padding grid grid-cols-1 lg:grid-cols-12 gap-10">
+          <div className="lg:col-span-8">
+            <PostContent post={post} />
+          </div>
+          <aside className="lg:col-span-4">
+            <div className="bg-background border rounded-lg p-6">
+              <h3 className="text-lg font-semibold mb-3">About the author</h3>
+              <p className="text-sm text-muted-foreground">
+                {post.author} is a software professional at Bitnex Infotech.
+              </p>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      {/* More articles */}
+      <section className="py-16 bg-secondary/5">
+        <div className="container-max section-padding">
+          <h2 className="text-2xl font-bold mb-8">More articles</h2>
+          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+            {morePosts.map((p) => (
+              <article key={p.id} className="rounded-lg border overflow-hidden bg-background">
+                <Link href={`/blog/${p.slug}`} className="block">
+                  <div className="aspect-video bg-gradient-to-br from-primary/10 to-secondary/10">
+                    <img src={p.image} alt={p.title} className="w-full h-full object-cover" />
+                  </div>
+                  <div className="p-5">
+                    <div className="flex items-center gap-2 mb-2 text-xs text-muted-foreground">
+                      <span className="bg-primary/10 text-primary px-2 py-1 rounded">
+                        {p.category}
+                      </span>
+                      <span>{new Date(p.date).toLocaleDateString("en-US", { month: "short", day: "numeric" })}</span>
+                    </div>
+                    <h3 className="font-semibold text-lg mb-2">{p.title}</h3>
+                    <p className="text-sm text-muted-foreground line-clamp-2">{p.excerpt}</p>
+                  </div>
+                </Link>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+    </Layout>
+  );
+}
