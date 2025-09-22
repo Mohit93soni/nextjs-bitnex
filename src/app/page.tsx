@@ -161,7 +161,7 @@ export default function HomePage() {
         "A comprehensive e-commerce platform with advanced inventory management, payment processing, and analytics dashboard.",
       technologies: ["React", "Node.js", "MongoDB", "Stripe"],
       category: "E-Commerce",
-      image: "/placeholder.svg",
+      image: "/images/Dukan.png",
     },
     {
       title: "Jewel Website",
@@ -169,7 +169,7 @@ export default function HomePage() {
         "Elegant jewelry showcase website with virtual try-on features and seamless online ordering system.",
       technologies: ["Next.js", "Three.js", "PostgreSQL", "AWS"],
       category: "Luxury Retail",
-      image: "/placeholder.svg",
+      image: "/images/Jewel.png",
     },
     {
       title: "MyClean Drycleaner App",
@@ -177,7 +177,7 @@ export default function HomePage() {
         "Mobile app connecting customers with local dry cleaning services, featuring real-time tracking and scheduling.",
       technologies: ["React Native", "Firebase", "Google Maps", "Stripe"],
       category: "Service Platform",
-      image: "/placeholder.svg",
+      image: "/images/MyClean.png",
     },
   ];
 
@@ -421,7 +421,13 @@ export default function HomePage() {
                 key={index}
                 className="group hover:shadow-lg transition-all duration-300"
               >
-                <div className="aspect-video bg-gradient-to-br from-primary/20 to-accent/20 rounded-t-lg"></div>
+                <div className="aspect-video bg-gradient-to-br from-primary/20 to-accent/20 rounded-t-lg">
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="w-full h-[250px] object-contain"
+                  />
+                </div>
                 <CardHeader>
                   <div className="flex items-center justify-between mb-2">
                     <Badge variant="outline">{project.category}</Badge>
