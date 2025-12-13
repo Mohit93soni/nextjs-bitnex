@@ -152,7 +152,7 @@ export default function TermsPage() {
               </p>
               <ul className="list-none mb-4">
                 <li>Email: hr@bitnexinfotech.com</li>
-                <li>Phone: (+91)894-696-1778 ,882-452-5849</li>
+                <li>Phone: (+91)978-501-8175</li>
                 <li>Address: Jhotwara, Jaipur</li>
               </ul>
             </section>
