@@ -5,10 +5,12 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { ThemeProvider } from "@/components/theme-provider";
+import Script from "next/script";
 
 const inter = Inter({ subsets: ["latin"] });
 
-const LOGO_BASE = "https://cdn.builder.io/api/v1/image/assets%2F00bbbe83bd864c758548dbeefa6488bb%2F0da2c468c5924159b241ac023fdc0adf";
+const LOGO_BASE =
+  "https://cdn.builder.io/api/v1/image/assets%2F00bbbe83bd864c758548dbeefa6488bb%2F0da2c468c5924159b241ac023fdc0adf";
 const LOGO_16 = `${LOGO_BASE}?format=png&width=16`;
 const LOGO_32 = `${LOGO_BASE}?format=png&width=32`;
 const LOGO_48 = `${LOGO_BASE}?format=png&width=48`;
@@ -107,6 +109,19 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={inter.className} suppressHydrationWarning>
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-XFTFK11D8R"
+          strategy="afterInteractive"
+        />
+
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-XFTFK11D8R');
+          `}
+        </Script>
         <ThemeProvider
           attribute="class"
           defaultTheme="light"
