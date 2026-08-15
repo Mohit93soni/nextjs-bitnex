@@ -28,11 +28,13 @@ export async function generateMetadata(
     title: `${post.title} - Bitnex Infotech Blog`,
     description: post.excerpt,
     keywords: post.tags.join(", "),
+    alternates: { canonical: `/blog/${post.slug}` },
     openGraph: {
       title: post.title,
       description: post.excerpt,
       images: [post.image],
       type: "article",
+      url: `/blog/${post.slug}`,
       publishedTime: post.date,
       authors: [post.author],
     },
@@ -53,8 +55,33 @@ export default async function BlogPostPage(props: BlogPostPageProps) {
     notFound();
   }
 
+  const siteUrl =
+    process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.bitnexinfotech.com";
+  const postUrl = `${siteUrl}/blog/${post.slug}`;
+  const imageUrl = new URL(post.image, siteUrl).toString();
+
   return (
     <Layout>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BlogPosting",
+            headline: post.title,
+            description: post.excerpt,
+            image: imageUrl,
+            datePublished: post.date,
+            author: { "@type": "Person", name: post.author },
+            publisher: {
+              "@type": "Organization",
+              name: "Bitnex Infotech",
+              logo: { "@type": "ImageObject", url: `${siteUrl}/images/logo-square.png` },
+            },
+            mainEntityOfPage: { "@type": "WebPage", "@id": postUrl },
+          }),
+        }}
+      />
       {/* Back Button */}
       <div className="py-6 border-b">
         <div className="container-max section-padding">

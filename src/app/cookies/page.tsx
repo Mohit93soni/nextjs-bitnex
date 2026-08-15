@@ -7,6 +7,7 @@ export const metadata: Metadata = {
     "Cookie Policy for Bitnex Infotech. Learn about how we use cookies and tracking technologies on our website.",
   keywords:
     "cookie policy, cookies, tracking, website analytics, bitnex infotech",
+  alternates: { canonical: "/cookies" },
 };
 
 export default function CookiesPage() {

@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   title: 'Careers - Bitnex Infotech | Join Our Software Development Team',
   description: 'Join Bitnex Infotech and be part of an innovative software development team. Explore exciting career opportunities in web development, mobile apps, and cloud solutions.',
   keywords: 'careers, jobs, software developer, react developer, mobile developer, remote work, bitnex infotech jobs',
+  alternates: { canonical: "/careers" },
 };
 
 const benefits = [

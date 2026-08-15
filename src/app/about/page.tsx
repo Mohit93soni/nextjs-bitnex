@@ -8,6 +8,7 @@ export const metadata: Metadata = {
     "Learn about Bitnex Infotech, our mission, values, and the experienced team behind innovative software solutions. We're passionate about building technology that makes a difference.",
   keywords:
     "about bitnex infotech, software company, development team, mission, values, technology solutions",
+  alternates: { canonical: "/about" },
 };
 
 const stats = [
