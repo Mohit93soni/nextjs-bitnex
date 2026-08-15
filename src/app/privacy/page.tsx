@@ -7,6 +7,7 @@ export const metadata: Metadata = {
     "Privacy Policy for Bitnex Infotech. Learn how we collect, use, and protect your personal information.",
   keywords:
     "privacy policy, data protection, personal information, bitnex infotech",
+  alternates: { canonical: "/privacy" },
 };
 
 export default function PrivacyPage() {

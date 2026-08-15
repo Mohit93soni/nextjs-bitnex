@@ -1,5 +1,5 @@
-﻿User-agent: *
-Disallow:
+User-agent: *
+Allow: /
+Disallow: /api/
 
-
-Sitemap: https://www.bitnexinfotech.com/sitemap.xml
+Sitemap: https://bitnex.com/sitemap.xml

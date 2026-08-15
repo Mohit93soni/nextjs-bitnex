@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   description:
     "Terms of Service for Bitnex Infotech. Read our terms and conditions for using our software development services.",
   keywords: "terms of service, terms and conditions, legal, bitnex infotech",
+  alternates: { canonical: "/terms" },
 };
 
 export default function TermsPage() {

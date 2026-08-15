@@ -9,21 +9,23 @@ import Script from "next/script";
 
 const inter = Inter({ subsets: ["latin"] });
 
-const LOGO_IMAGE = "/images/logo.png";
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://bitnex.com";
+const LOGO_SQUARE = "/images/logo-square.png";
+const SITE_DESCRIPTION =
+  "Bitnex Infotech delivers cutting-edge software solutions including web development, mobile apps, cloud infrastructure, and DevOps services.";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://bitnexinfotech.com"),
+  metadataBase: new URL(SITE_URL),
   title: {
     default: "Bitnex Infotech - Cutting-edge Software Solutions",
     template: "%s | Bitnex Infotech",
   },
   icons: {
-    icon: [{ url: LOGO_IMAGE, sizes: "512x512", type: "image/png" }],
-    shortcut: LOGO_IMAGE,
+    icon: [{ url: LOGO_SQUARE, sizes: "1024x1024", type: "image/png" }],
+    shortcut: LOGO_SQUARE,
   },
   manifest: "/site.webmanifest",
-  description:
-    "Bitnex Infotech delivers cutting-edge software solutions including web development, mobile apps, cloud infrastructure, and DevOps services. Transform your business with modern technology.",
+  description: SITE_DESCRIPTION,
   keywords: [
     "software development",
     "web development",
@@ -54,16 +56,16 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://bitnexinfotech.com",
+    url: SITE_URL,
     siteName: "Bitnex Infotech",
     title: "Bitnex Infotech - Cutting-edge Software Solutions",
     description:
       "Transform your business with modern software solutions. Expert web development, mobile apps, and cloud infrastructure services.",
     images: [
       {
-        url: LOGO_IMAGE,
-        width: 1200,
-        height: 630,
+        url: LOGO_SQUARE,
+        width: 1024,
+        height: 1024,
         alt: "Bitnex Infotech - Software Development Company",
       },
     ],
@@ -73,11 +75,11 @@ export const metadata: Metadata = {
     title: "Bitnex Infotech - Cutting-edge Software Solutions",
     description:
       "Transform your business with modern software solutions. Expert web development, mobile apps, and cloud infrastructure services.",
-    images: [LOGO_IMAGE],
+    images: [LOGO_SQUARE],
     creator: "@bitnexinfotech",
   },
   alternates: {
-    canonical: "https://bitnexinfotech.com",
+    canonical: "/",
   },
   other: {
     "apple-mobile-web-app-capable": "yes",
@@ -97,7 +99,32 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        <link rel="icon" href={LOGO_IMAGE} type="image/png" />
+        <link rel="icon" href={LOGO_SQUARE} type="image/png" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@graph": [
+                {
+                  "@type": "Organization",
+                  "@id": `${SITE_URL}/#organization`,
+                  name: "Bitnex Infotech",
+                  url: SITE_URL,
+                  logo: `${SITE_URL}${LOGO_SQUARE}`,
+                  description: SITE_DESCRIPTION,
+                },
+                {
+                  "@type": "WebSite",
+                  "@id": `${SITE_URL}/#website`,
+                  url: SITE_URL,
+                  name: "Bitnex Infotech",
+                  publisher: { "@id": `${SITE_URL}/#organization` },
+                },
+              ],
+            }),
+          }}
+        />
       </head>
       <body className={inter.className} suppressHydrationWarning>
         <Script

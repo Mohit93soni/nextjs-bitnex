@@ -21,6 +21,7 @@ export const metadata: Metadata = {
     "Comprehensive software development services including web applications, mobile apps, cloud solutions, and more. Let's discuss the best solution for your business needs.",
   keywords:
     "software development, web development, mobile apps, cloud solutions, custom software, React, Next.js, Flutter",
+  alternates: { canonical: "/services" },
 };
 
 const services = [

@@ -10,6 +10,7 @@ export const metadata: Metadata = {
     "Stay updated with the latest trends in software development, web technologies, mobile apps, and cloud solutions. Expert insights and tutorials from Bitnex Infotech team.",
   keywords:
     "software development blog, web development, mobile apps, react tutorials, next.js, cloud computing, programming",
+  alternates: { canonical: "/blog" },
 };
 
 const featuredPost = blogPosts.find((post) => post.featured);

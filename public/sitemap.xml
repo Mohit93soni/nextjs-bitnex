@@ -1,82 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset
-      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
-            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
-
-
-<url>
-  <loc>https://www.bitnexinfotech.com/</loc>
-  <lastmod>2025-08-01T07:06:19+00:00</lastmod>
-  <priority>1.00</priority>
-</url>
-<url>
-  <loc>https://www.bitnexinfotech.com/services</loc>
-  <lastmod>2025-08-01T07:06:19+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://www.bitnexinfotech.com/about</loc>
-  <lastmod>2025-08-01T07:06:19+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://www.bitnexinfotech.com/careers</loc>
-  <lastmod>2025-08-01T07:06:19+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://www.bitnexinfotech.com/blog</loc>
-  <lastmod>2025-08-01T07:06:19+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://www.bitnexinfotech.com/contact</loc>
-  <lastmod>2025-08-01T07:06:19+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://www.bitnexinfotech.com/privacy</loc>
-  <lastmod>2025-08-01T07:06:19+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://www.bitnexinfotech.com/terms</loc>
-  <lastmod>2025-08-01T07:06:19+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://www.bitnexinfotech.com/cookies</loc>
-  <lastmod>2025-08-01T07:06:19+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://www.bitnexinfotech.com/contact?position=Senior%20React%20Developer</loc>
-  <lastmod>2025-08-01T07:06:19+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://www.bitnexinfotech.com/contact?position=Full%20Stack%20Developer</loc>
-  <lastmod>2025-08-01T07:06:19+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://www.bitnexinfotech.com/contact?position=Mobile%20App%20Developer</loc>
-  <lastmod>2025-08-01T07:06:19+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://www.bitnexinfotech.com/contact?position=DevOps%20Engineer</loc>
-  <lastmod>2025-08-01T07:06:19+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://www.bitnexinfotech.com/contact?subject=General%20Application</loc>
-  <lastmod>2025-08-01T07:06:19+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-
-
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://bitnex.com/</loc></url>
+  <url><loc>https://bitnex.com/about</loc></url>
+  <url><loc>https://bitnex.com/services</loc></url>
+  <url><loc>https://bitnex.com/careers</loc></url>
+  <url><loc>https://bitnex.com/blog</loc></url>
+  <url><loc>https://bitnex.com/contact</loc></url>
+  <url><loc>https://bitnex.com/privacy</loc></url>
+  <url><loc>https://bitnex.com/terms</loc></url>
+  <url><loc>https://bitnex.com/cookies</loc></url>
+  <url><loc>https://bitnex.com/blog/building-scalable-react-applications-with-nextjs-14</loc></url>
+  <url><loc>https://bitnex.com/blog/mobile-app-development-react-native-vs-flutter</loc></url>
+  <url><loc>https://bitnex.com/blog/cloud-migration-strategies-for-modern-applications</loc></url>
+  <url><loc>https://bitnex.com/blog/typescript-best-practices-for-large-scale-applications</loc></url>
+  <url><loc>https://bitnex.com/blog/implementing-real-time-features-with-websockets</loc></url>
+  <url><loc>https://bitnex.com/blog/database-design-patterns-for-modern-web-apps</loc></url>
+  <url><loc>https://bitnex.com/blog/security-best-practices-for-web-applications</loc></url>
+  <url><loc>https://bitnex.com/blog/performance-optimization-techniques-for-react-apps</loc></url>
 </urlset>
