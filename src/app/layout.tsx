@@ -26,14 +26,12 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: LOGO_16, sizes: "16x16", type: "image/png" },
-      { url: LOGO_32, sizes: "32x32", type: "image/png" },
-      { url: LOGO_48, sizes: "48x48", type: "image/png" },
-      { url: LOGO_512, sizes: "512x512", type: "image/png" },
+      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+      { url: "/favicon.ico", type: "image/x-icon" },
     ],
-    apple: [{ url: LOGO_180, sizes: "180x180", type: "image/png" }],
-    shortcut: LOGO_32,
+    shortcut: "/favicon.ico",
   },
+  manifest: "/site.webmanifest",
   description:
     "Bitnex Infotech delivers cutting-edge software solutions including web development, mobile apps, cloud infrastructure, and DevOps services. Transform your business with modern technology.",
   keywords: [
