@@ -9,14 +9,7 @@ import Script from "next/script";
 
 const inter = Inter({ subsets: ["latin"] });
 
-const LOGO_BASE =
-  "https://cdn.builder.io/api/v1/image/assets%2F00bbbe83bd864c758548dbeefa6488bb%2F0da2c468c5924159b241ac023fdc0adf";
-const LOGO_16 = `${LOGO_BASE}?format=png&width=16`;
-const LOGO_32 = `${LOGO_BASE}?format=png&width=32`;
-const LOGO_48 = `${LOGO_BASE}?format=png&width=48`;
-const LOGO_180 = `${LOGO_BASE}?format=png&width=180`;
-const LOGO_512 = `${LOGO_BASE}?format=png&width=512`;
-const OG_IMAGE = `${LOGO_BASE}?format=png&width=1200`;
+const LOGO_IMAGE = "/images/logo.png";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://bitnexinfotech.com"),
@@ -25,11 +18,8 @@ export const metadata: Metadata = {
     template: "%s | Bitnex Infotech",
   },
   icons: {
-    icon: [
-      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
-      { url: "/favicon.ico", type: "image/x-icon" },
-    ],
-    shortcut: "/favicon.ico",
+    icon: [{ url: LOGO_IMAGE, sizes: "512x512", type: "image/png" }],
+    shortcut: LOGO_IMAGE,
   },
   manifest: "/site.webmanifest",
   description:
@@ -71,7 +61,7 @@ export const metadata: Metadata = {
       "Transform your business with modern software solutions. Expert web development, mobile apps, and cloud infrastructure services.",
     images: [
       {
-        url: OG_IMAGE,
+        url: LOGO_IMAGE,
         width: 1200,
         height: 630,
         alt: "Bitnex Infotech - Software Development Company",
@@ -83,7 +73,7 @@ export const metadata: Metadata = {
     title: "Bitnex Infotech - Cutting-edge Software Solutions",
     description:
       "Transform your business with modern software solutions. Expert web development, mobile apps, and cloud infrastructure services.",
-    images: [OG_IMAGE],
+    images: [LOGO_IMAGE],
     creator: "@bitnexinfotech",
   },
   alternates: {
@@ -106,6 +96,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <link rel="icon" href={LOGO_IMAGE} type="image/png" />
+      </head>
       <body className={inter.className} suppressHydrationWarning>
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-XFTFK11D8R"

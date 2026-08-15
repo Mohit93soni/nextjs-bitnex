@@ -45,7 +45,7 @@ export default function Footer() {
             <div className="lg:col-span-1">
               <Link href="/" className="flex items-center space-x-1 mb-4">
                 <img
-                  src="https://cdn.builder.io/api/v1/image/assets%2F00bbbe83bd864c758548dbeefa6488bb%2F0da2c468c5924159b241ac023fdc0adf?format=png&width=96"
+                  src="/images/logo.png"
                   alt="Bitnex logo"
                   className="h-12 w-auto rounded"
                 />
