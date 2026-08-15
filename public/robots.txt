@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /api/
 
-Sitemap: https://bitnex.com/sitemap.xml
+Sitemap: https://www.bitnexinfotech.com/sitemap.xml

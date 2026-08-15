@@ -9,7 +9,8 @@ import Script from "next/script";
 
 const inter = Inter({ subsets: ["latin"] });
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://bitnex.com";
+const SITE_URL =
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.bitnexinfotech.com";
 const LOGO_SQUARE = "/images/logo-square.png";
 const SITE_DESCRIPTION =
   "Bitnex Infotech delivers cutting-edge software solutions including web development, mobile apps, cloud infrastructure, and DevOps services.";

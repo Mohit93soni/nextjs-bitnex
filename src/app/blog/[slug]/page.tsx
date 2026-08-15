@@ -55,7 +55,8 @@ export default async function BlogPostPage(props: BlogPostPageProps) {
     notFound();
   }
 
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://bitnex.com";
+  const siteUrl =
+    process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.bitnexinfotech.com";
   const postUrl = `${siteUrl}/blog/${post.slug}`;
   const imageUrl = new URL(post.image, siteUrl).toString();
 
